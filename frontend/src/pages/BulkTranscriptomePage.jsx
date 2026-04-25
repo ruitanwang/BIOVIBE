@@ -5,6 +5,7 @@ import './BulkTranscriptomePage.css'
 function BulkTranscriptomePage() {
   const [expandedMenu, setExpandedMenu] = useState(null)
   const [activeAnalysis, setActiveAnalysis] = useState('Bulk转录组分析')
+  const [activeTab, setActiveTab] = useState('workspace')
 
   const menuItems = [
     {
@@ -70,14 +71,37 @@ function BulkTranscriptomePage() {
         <main className="bulk-workspace">
           <div className="workspace-header">
             <h2>{activeAnalysis}</h2>
+            <div className="workspace-tabs">
+              <button 
+                className={`tab-button ${activeTab === 'description' ? 'active' : ''}`}
+                onClick={() => setActiveTab('description')}
+              >
+                方法说明
+              </button>
+              <button 
+                className={`tab-button ${activeTab === 'workspace' ? 'active' : ''}`}
+                onClick={() => setActiveTab('workspace')}
+              >
+                工作区块
+              </button>
+            </div>
           </div>
           <div className="workspace-content">
-            <p className="workspace-placeholder">
-              欢迎使用 {activeAnalysis} 工作区
-            </p>
-            <div className="workspace-info">
-              <p>请从左侧导航栏选择分析方法开始分析</p>
-            </div>
+            {activeTab === 'description' ? (
+              <div className="description-panel">
+                <h3>{activeAnalysis} - 方法说明</h3>
+                <p>这里是 {activeAnalysis} 的详细说明文档</p>
+              </div>
+            ) : (
+              <>
+                <p className="workspace-placeholder">
+                  欢迎使用 {activeAnalysis} 工作区
+                </p>
+                <div className="workspace-info">
+                  <p>请从左侧导航栏选择分析方法开始分析</p>
+                </div>
+              </>
+            )}
           </div>
         </main>
       </div>

@@ -167,6 +167,9 @@
   padding: 1.5rem 2rem;
   background: linear-gradient(135deg, #74b9ff, #a29bfe);
   border-radius: 17px 17px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .workspace-header h2 {
@@ -174,6 +177,34 @@
   color: white;
   font-size: 1.8rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.workspace-tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tab-button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.tab-button.active {
+  background: white;
+  color: #74b9ff;
+  border-color: white;
 }
 
 .workspace-content {

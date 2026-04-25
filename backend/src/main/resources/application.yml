@@ -1,0 +1,30 @@
+server:
+  port: 3001
+
+spring:
+  application:
+    name: biovibe-backend
+  
+  datasource:
+    url: jdbc:mysql://localhost:3306/biovibe?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: ${DB_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+  
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+
+logging:
+  level:
+    com.biovibe: debug
+    org.springframework.web: info
