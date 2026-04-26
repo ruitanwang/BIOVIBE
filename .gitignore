@@ -36,3 +36,15 @@ lerna-debug.log*
 
 # Environment variables
 .env
+
+# Maven
+backend/target/
+
+# H2 database files
+backend/data/
+
+# Upload directory
+backend/uploads/
+
+# Trae rules
+.trae/
