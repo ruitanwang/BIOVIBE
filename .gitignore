@@ -48,3 +48,6 @@ backend/uploads/
 
 # Trae rules
 .trae/
+
+# Vite cache
+frontend/.vite/
