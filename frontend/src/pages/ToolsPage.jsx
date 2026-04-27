@@ -2,6 +2,21 @@ import { useState, useRef, useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './ToolsPage.css'
 
+import PCATool from '../components/tools/PCATool'
+import VolcanoTool from '../components/tools/VolcanoTool'
+import HeatmapTool from '../components/tools/HeatmapTool'
+import MAPlotTool from '../components/tools/MAPlotTool'
+import BoxplotTool from '../components/tools/BoxplotTool'
+import ViolinTool from '../components/tools/ViolinTool'
+import BubbleTool from '../components/tools/BubbleTool'
+import CircosTool from '../components/tools/CircosTool'
+import DiffAnalysisTool from '../components/tools/DiffAnalysisTool'
+import EnrichmentTool from '../components/tools/EnrichmentTool'
+import GSEATool from '../components/tools/GSEATool'
+import WGCNATool from '../components/tools/WGCNATool'
+import SurvivalTool from '../components/tools/SurvivalTool'
+import CorrelationTool from '../components/tools/CorrelationTool'
+
 const analysisMethods = [
   { id: 'diff-analysis', name: '差异分析', icon: '\u{1F4CA}', desc: 'DESeq2 / edgeR 差异表达基因分析' },
   { id: 'enrichment', name: '富集分析', icon: '\u{1F9EC}', desc: 'GO / KEGG 功能富集分析' },
@@ -21,6 +36,23 @@ const plotModules = [
   { id: 'bubble', name: '气泡图', icon: '\u{1FAE7}', desc: '富集分析气泡图' },
   { id: 'circos', name: 'Circos图', icon: '\u{1F300}', desc: '基因组圈图可视化' },
 ]
+
+const TOOL_COMPONENTS = {
+  'pca': PCATool,
+  'volcano': VolcanoTool,
+  'heatmap': HeatmapTool,
+  'ma-plot': MAPlotTool,
+  'boxplot': BoxplotTool,
+  'violin': ViolinTool,
+  'bubble': BubbleTool,
+  'circos': CircosTool,
+  'diff-analysis': DiffAnalysisTool,
+  'enrichment': EnrichmentTool,
+  'gsea': GSEATool,
+  'wgcna': WGCNATool,
+  'survival': SurvivalTool,
+  'correlation': CorrelationTool,
+}
 
 function ToolsPage() {
   const [sidebarWidth, setSidebarWidth] = useState(20)
@@ -73,6 +105,11 @@ function ToolsPage() {
       )
     }
 
+    const ToolComponent = TOOL_COMPONENTS[selectedTool.id]
+    if (ToolComponent) {
+      return <ToolComponent />
+    }
+
     return (
       <div className="tools-workspace">
         <div className="tools-work-header">
@@ -112,7 +149,7 @@ function ToolsPage() {
             <h4 className="tools-config-title">运行结果</h4>
             <div className="tools-result-placeholder">
               <span className="tools-result-icon">{'\u{23F3}'}</span>
-              <p>配置参数后点击"开始运行"</p>
+              <p>该模块正在开发中，敬请期待</p>
             </div>
           </div>
         </div>
